@@ -38,6 +38,8 @@ class LandmarksController < ApplicationController
 
       redirect to :"/landmarks/#{@landmark.id}"
     else
+      @titles = Title.all
+      @figures = Figure.all
       @error_message = "You must give the landmark a name!"
       erb :'/landmarks/new'
     end
