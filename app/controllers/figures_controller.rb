@@ -9,6 +9,10 @@ class FiguresController < ApplicationController
     erb :'/figures/index'
   end
 
+  get '/figures/new' do
+    erb :'/figures/new'
+  end
+
   get '/figures/:id' do
     @figure = Figure.find_by(id: params[:id])
     erb :'/figures/show'
