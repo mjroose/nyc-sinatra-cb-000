@@ -1,8 +1,6 @@
 class Helpers
   def self.find_or_create_figure(figure_data)
-    name = figure_data[:name]
-    id = figure_data[:id]
-    Figure.find_or_create_by(name: name) || Figure.find_by(id: id) || nil
+    Figure.find_or_create_by(name: figure_data[:name]) || Figure.find_by(id: figure_data[:id]) || nil
   end
 
   def self.collect_titles(titles_data)
