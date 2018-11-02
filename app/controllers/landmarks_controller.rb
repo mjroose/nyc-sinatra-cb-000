@@ -1,4 +1,4 @@
-require_relative './../models/concerns/LandmarkHelpers.rb'
+require_relative './../models/concerns/LandmarkHelpers'
 
 class LandmarksController < ApplicationController
   set :views, proc { File.join(root, '../views/') }
