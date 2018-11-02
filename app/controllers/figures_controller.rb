@@ -28,6 +28,7 @@ class FiguresController < ApplicationController
   end
 
   post '/figures' do
+    binding.pry
     @figure = Figure.create(name: params[:figure][:name])
 
     if @figure
