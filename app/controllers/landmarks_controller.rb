@@ -1,3 +1,5 @@
+require_relative './../models/concerns/LandmarkHelpers.rb'
+
 class LandmarksController < ApplicationController
   set :views, proc { File.join(root, '../views/') }
   register Sinatra::Twitter::Bootstrap::Assets
