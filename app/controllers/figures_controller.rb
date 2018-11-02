@@ -19,4 +19,8 @@ class FiguresController < ApplicationController
     @figure = Figure.find_by(id: params[:id])
     erb :'/figures/show'
   end
+
+  post '/figures' do
+    binding.pry
+  end
 end
