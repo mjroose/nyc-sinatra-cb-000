@@ -24,8 +24,30 @@ class LandmarksController < ApplicationController
   end
 
   post '/landmarks' do
-    @landmark = Landmark.new(name: params[:landmark][:name])
+    @figure_name = params[:figures][:name]
+    @figure_id = params[:figures][:id]
+    @landmark = Landmark.find_or_create_by(name: params[:landmark][:name]) unless params[:landmark][:name] == ""
+    @title_name = params[:titles][:name]
+    @title_ids = params[:titles][:ids] || []
 
+    if @figure_name
+      @figure = Figure.find_or_create_by(name: @figure_name)
+    elsif @figure_id
+      @figure = Figure.find_by(id: @figure_id)
+    end      
+
+    if @title_name
+      @title_ids << Title.find_or_create_by(name: @title_name).id
+      @title_ids.uniq!
+    end
+
+    if @figure
+      @figure.landmarks << @landmark
+      @figure.titles = @title_ids.collect do |title_id|
+        title = Title.find_by(id: title_id)
+      end.compact
+    end
+    
     binding.pry
   end
 end
