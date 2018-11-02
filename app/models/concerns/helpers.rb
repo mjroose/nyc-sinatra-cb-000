@@ -22,7 +22,7 @@ class Helpers
     ids = landmarks_data[:ids] || []
 
     if name
-      ids << Title.find_or_create_by(name: name, year_completed: year_completed).id
+      ids << Landmark.find_or_create_by(name: name, year_completed: year_completed).id
     end
 
     ids.uniq.collect do |id|
