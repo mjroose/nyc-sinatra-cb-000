@@ -45,6 +45,15 @@ class FiguresController < ApplicationController
   end
 
   patch '/figures/:id' do
-    binding.pry
+    @figure = Figure.find_by(params[:id])
+
+    if @figure
+      @figure.update(name: params[:name], titles: Helpers.collect_titles(params[:titles]), landmarks: Helpers.collect_landmarks(params[:landmarks]))
+      
+      redirect to :"/figures/#{@figure.id}"
+    else
+      @figures = Figure.all
+      erb :'/figures/index'
+    end
   end
 end
