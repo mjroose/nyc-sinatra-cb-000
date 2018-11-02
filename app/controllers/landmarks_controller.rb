@@ -50,8 +50,6 @@ class LandmarksController < ApplicationController
       @figure.save
     end
 
-    binding.pry
-
     redirect to :"/landmarks/#{@landmark.id}"
   end
 end
