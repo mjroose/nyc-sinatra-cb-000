@@ -15,10 +15,10 @@ class LandmarkHelpers
 
   def self.collect_titles(titles_data)
     name = titles_data[:name]
-    ids = title_data[:ids] || []
+    ids = titles_data[:ids] || []
 
     if name
-      ids << Title.find_or_create_by(name: @name).id
+      ids << Title.find_or_create_by(name: name).id
     end
 
     ids.uniq.collect do |id|
