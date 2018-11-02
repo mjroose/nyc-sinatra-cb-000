@@ -26,7 +26,7 @@ class LandmarksController < ApplicationController
   post '/landmarks' do
     @figure_name = params[:figures][:name]
     @figure_id = params[:figures][:id]
-    @landmark = Landmark.find_or_create_by(name: params[:landmark][:name]) unless params[:landmark][:name] == ""
+    @landmark = Landmark.find_or_create_by(name: params[:landmark][:name], year_completed: params[:landmark][:year_completed]) unless params[:landmark][:name] == ""
     @title_name = params[:titles][:name]
     @title_ids = params[:titles][:ids] || []
 
