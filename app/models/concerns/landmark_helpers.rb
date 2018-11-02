@@ -15,6 +15,7 @@ class LandmarkHelpers
     if @title_name
       ids << Title.find_or_create_by(name: @title_name).id
     end
+    
     ids.uniq
   end
 end
