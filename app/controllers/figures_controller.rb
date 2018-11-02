@@ -34,6 +34,6 @@ class FiguresController < ApplicationController
       @landmarks = Landmark.all
       @error_message = "You must give the landmark a name!"
       erb :'/figures/new'
-    binding.pry
+    end
   end
 end
