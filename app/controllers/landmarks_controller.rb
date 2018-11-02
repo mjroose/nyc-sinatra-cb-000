@@ -29,16 +29,21 @@ class LandmarksController < ApplicationController
 
   post '/landmarks' do
     @figure = LandmarkHelpers.find_or_create_figure(params[:figures])
-    binding.pry
     @landmark = Landmark.find_or_create_by(name: params[:landmark][:name], year_completed: params[:landmark][:year_completed]) unless params[:landmark][:name] == ""
     @figure.titles = LandmarkHelpers.collect_titles(params[:titles])
+    binding.pry
 
     if @figure
       @figure.landmarks << @landmark unless @landmark == nil
       @figure.save
     end
 
-    redirect to :"/landmarks/#{@landmark.id}"
+    if @landmark
+      redirect to :"/landmarks/#{@landmark.id}"
+    else
+      @error_message = "You must give the landmark a name!"
+      erb :'/landmarks/new'
+    end
   end
 
   patch '/landmarks/:id' do
