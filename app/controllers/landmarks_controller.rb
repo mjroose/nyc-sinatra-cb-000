@@ -46,8 +46,12 @@ class LandmarksController < ApplicationController
       @figure.titles = @title_ids.collect do |title_id|
         title = Title.find_by(id: title_id)
       end.compact
+      
+      @figure.save
     end
 
     binding.pry
+
+    redirect to :"/landmarks/#{@landmark.id}"
   end
 end
