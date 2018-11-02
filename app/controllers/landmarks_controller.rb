@@ -46,7 +46,7 @@ class LandmarksController < ApplicationController
   patch '/landmarks/:id' do
     @figure = Helpers.find_or_create_figure(params[:figures])
     @landmark = Landmark.find_by(params[:id])
-    @landmark.update(name: params[:landmark][:name])
+    @landmark.update(name: params[:landmark][:name], year_completed: params[:landmark][:year_completed])
 
     if @landmark
       @figure.titles = Helpers.collect_titles(params[:titles])
