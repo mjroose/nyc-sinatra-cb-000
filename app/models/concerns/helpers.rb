@@ -16,4 +16,18 @@ class Helpers
     end.compact
   end
 
+  def self.collect_landmarks(landmarks_data)
+    name = landmarks_data[:name]
+    year_completed = landmarks_data[:year]
+    ids = landmarks_data[:ids] || []
+
+    if name
+      ids << Title.find_or_create_by(name: name, year_completed: year_completed).id
+    end
+
+    ids.uniq.collect do |id|
+      Landmark.find_by(id: id)
+    end.compact
+  end
+
 end
