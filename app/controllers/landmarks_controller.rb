@@ -46,14 +46,14 @@ class LandmarksController < ApplicationController
   end
 
   patch '/landmarks/:id' do
-    @figure = Helpers.find_or_create_figure(params[:figures])
     @landmark = Landmark.find_by(params[:id])
-    @landmark.update(name: params[:landmark][:name], year_completed: params[:landmark][:year_completed])
-
+    name = params[:landmark][:name]
+    year_completed = params[:landmark][:year_completed]
+    figure = Helpers.find_or_create_figure(params[:figures])
+    titles = Helpers.collect_titles(params[:titles])
+    
     if @landmark
-      @figure.titles = Helpers.collect_titles(params[:titles])
-      @landmark.figure = @figure
-      @landmark.save
+      @landmark.update(name: name, year_completed: year_completed, figure: figure, titles: titles)
 
       redirect to :"/landmarks/#{@landmark.id}"
     else
