@@ -4,14 +4,14 @@
   <input type="hidden" name="_method" value="patch">
   <p>
     <label for="figure[name]">Name </label>
-    <input type="text" name="figure[name]" id="figure[name]" value="<%= @figure.name %>">
+    <input type="text" name="figure[name]" id="figure_name" value="<%= @figure.name %>">
   </p>
 
   <h3>Titles</h3>
   <% @titles.each do |title| %>
     <p>
       <label for="title<%= title.id %>"><%= title.name %></label>
-      <input type="checkbox" id="title<%= title.id %>" name="titles[ids][]" value="<%= title.id %>" <%= "checked" if @figure.titles.include?(title) %>>
+      <input type="checkbox" id="figure[title_ids][]" name="titles[ids][]" value="<%= title.id %>" <%= "checked" if @figure.titles.include?(title) %>>
     </p>
   <% end %>
 
