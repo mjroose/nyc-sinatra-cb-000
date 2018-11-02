@@ -55,7 +55,7 @@ class LandmarksController < ApplicationController
 
     if @landmark
       @landmark.update(name: name, year_completed: year_completed, figure: figure, titles: titles)
-
+      binding.pry
       redirect to :"/landmarks/#{@landmark.id}"
     else
       @landmark = Landmark.find_by(id: params[:id])
