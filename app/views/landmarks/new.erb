@@ -21,7 +21,7 @@
   <% @figures.each do |figure| %>
     <p>
       <label for="figure<%= figure.id %>"><%= figure.name %></label>
-      <input type="checkbox" id="figure<%= figure.id %>" name="figures[ids][]" value="<%= figure.id %>">
+      <input type="radio" id="figure<%= figure.id %>" name="figures[id]" value="<%= figure.id %>">
     </p>
   <% end %>
 
