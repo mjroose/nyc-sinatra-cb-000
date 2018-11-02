@@ -44,15 +44,21 @@ class LandmarksController < ApplicationController
   end
 
   patch '/landmarks/:id' do
-    @figure_name = params[:figures][:name]
-    @figure_id = params[:figures][:id]
+    @figure = Helpers.find_or_create_figure(params[:figures])
     @landmark = Landmark.find_by(params[:id])
-    @title_name = params[:titles][:name]
-    @title_ids = params[:titles][:ids] || []
 
     if @landmark
+      @figure.titles = Helpers.collect_titles(params[:titles])
+      @landmark.figure = @figure
+      @landmark.save
 
+      redirect to :"/landmarks/#{@landmark.id}"
+    else
+      @landmark = Landmark.find_by(id: params[:id])
+      @titles = Title.all
+      @figures = Figure.all
+      @error_message = "You must give the landmark a name!"
+      erb :'/landmarks/edit'
     end
-
   end
 end
