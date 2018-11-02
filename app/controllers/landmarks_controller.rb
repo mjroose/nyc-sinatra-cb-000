@@ -34,7 +34,6 @@ class LandmarksController < ApplicationController
     if @landmark
       @figure.titles = Helpers.collect_titles(params[:titles])
       @landmark.figure = @figure
-      @figure.save
       @landmark.save
 
       redirect to :"/landmarks/#{@landmark.id}"
