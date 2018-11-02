@@ -17,11 +17,11 @@
   <h3>Create New Title</h3>
   <input type="text" name="titles[name]">
 
-  <h3>Landmarks</h3>
-  <% @landmarks.each do |landmark| %>
+  <h3>Figures</h3>
+  <% @figures.each do |figure| %>
     <p>
-      <label for="landmark<%= landmark.id %>"><%= landmark.name %></label>
-      <input type="checkbox" id="landmark<%= landmark.id %>" name="landmarks[ids]">
+      <label for="figure<%= figure.id %>"><%= figure.name %></label>
+      <input type="checkbox" id="figure<%= figure.id %>" name="figures[ids]">
     </p>
   <% end %>
 
@@ -31,7 +31,7 @@
   <label for="landmarks[year]">Year: </label>
   <input type="text" name="landmarks[year]">
 
-  <input type="submit" value="Create New Figure">
+  <input type="submit" value="Create New Landmark">
 </form>
 
 <a class="button" href="/figures">Landmarks</a>
