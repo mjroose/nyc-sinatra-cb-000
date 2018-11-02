@@ -21,6 +21,19 @@ class FiguresController < ApplicationController
   end
 
   post '/figures' do
+    @figure = Figure.create(name: params[:figure][:name])
+
+    if @figure
+      @figure.titles = Helpers.collect_titles(params[:titles])
+      @figure.landmarks = Helpers.collect_landmarks(params[:landmarks])
+      @figure.save
+
+      redirect to :"/figures/#{@figure.id}"
+    else
+      @titles = Title.all
+      @landmarks = Landmark.all
+      @error_message = "You must give the landmark a name!"
+      erb :'/figures/new'
     binding.pry
   end
 end
