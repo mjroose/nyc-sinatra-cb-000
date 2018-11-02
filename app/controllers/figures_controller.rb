@@ -37,8 +37,8 @@ class FiguresController < ApplicationController
     landmark_year = params[:figure][:landmark_year]
 
     if @figure
-      @figure.titles = Helpers.collect_titles(params[:titles])
-      @figure.landmarks = Helpers.collect_landmarks(params[:landmarks])
+      @figure.titles = Helpers.collect_titles(name: title_name, ids: title_ids)
+      @figure.landmarks = Helpers.collect_landmarks(name: landmark_name, year: landmark_year, ids: landmark_ids)
       @figure.save
 
       redirect to :"/figures/#{@figure.id}"
