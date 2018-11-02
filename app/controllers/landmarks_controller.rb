@@ -1,4 +1,4 @@
-require_relative './../models/concerns/landmark_helpers.rb'
+require_relative './../models/concerns/helpers.rb'
 
 class LandmarksController < ApplicationController
   set :views, proc { File.join(root, '../views/') }
@@ -28,9 +28,9 @@ class LandmarksController < ApplicationController
   end
 
   post '/landmarks' do
-    @figure = LandmarkHelpers.find_or_create_figure(params[:figures])
+    @figure = Helpers.find_or_create_figure(params[:figures])
     @landmark = Landmark.find_or_create_by(name: params[:landmark][:name], year_completed: params[:landmark][:year_completed]) unless params[:landmark][:name] == ""
-    @figure.titles = LandmarkHelpers.collect_titles(params[:titles])
+    @figure.titles = Helpers.collect_titles(params[:titles])
     binding.pry
 
     if @figure
