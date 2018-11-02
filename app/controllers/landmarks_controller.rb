@@ -32,11 +32,10 @@ class LandmarksController < ApplicationController
     @landmark = Landmark.find_or_create_by(params[:landmark])
 
     if @landmark
-      if @figure
-        @figure.titles = Helpers.collect_titles(params[:titles])
-        @figure.landmarks << @landmark
-        @figure.save
-      end
+      @figure.titles = Helpers.collect_titles(params[:titles])
+      @landmark.figure = @figure
+      @figure.save
+      @landmark.save
 
       redirect to :"/landmarks/#{@landmark.id}"
     else
