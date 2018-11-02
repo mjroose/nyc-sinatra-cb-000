@@ -16,5 +16,4 @@ class Helpers
     end.compact
   end
 
-
 end
