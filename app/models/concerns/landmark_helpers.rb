@@ -12,12 +12,9 @@ class LandmarkHelpers
   end
 
   def self.parse_titles(name: nil, ids: [])
-    @title_name = params[:titles][:name]
-    @title_ids = params[:titles][:ids] || []
-  
     if @title_name
-      @title_ids << Title.find_or_create_by(name: @title_name).id
-      @title_ids.uniq!
+      ids << Title.find_or_create_by(name: @title_name).id
     end
+    ids.uniq
   end
 end
