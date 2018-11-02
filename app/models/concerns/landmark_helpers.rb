@@ -11,11 +11,13 @@ class LandmarkHelpers
     figure
   end
 
-  def self.collect_title_ids(name: nil, ids: [])
-    if @title_name
-      ids << Title.find_or_create_by(name: @title_name).id
+  def self.collect_titles(name: nil, ids: [])
+    if name
+      ids << Title.find_or_create_by(name: @name).id
     end
 
-    ids.uniq
+    ids.uniq.collect do |id|
+      Title.find_by(id: id)
+    end.compact
   end
 end
