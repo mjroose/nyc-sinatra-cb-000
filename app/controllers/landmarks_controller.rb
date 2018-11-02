@@ -52,8 +52,9 @@ class LandmarksController < ApplicationController
     year_completed = params[:landmark][:year_completed]
     figure = Helpers.find_or_create_figure(params[:figures])
     titles = Helpers.collect_titles(params[:titles])
-      binding.pry
+
     if @landmark
+      binding.pry
       @landmark.update(name: name, year_completed: year_completed, figure: figure, titles: titles)
 
       redirect to :"/landmarks/#{@landmark.id}"
