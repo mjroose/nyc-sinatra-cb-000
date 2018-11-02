@@ -1,4 +1,4 @@
-class LandmarkHelpers
+class Helpers
   def self.find_or_create_figure(figure_data)
     name = figure_data[:name]
     id = figure_data[:id]
