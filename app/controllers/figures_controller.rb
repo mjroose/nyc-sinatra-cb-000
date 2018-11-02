@@ -31,7 +31,7 @@ class FiguresController < ApplicationController
     binding.pry
     @figure = Figure.create(name: params[:figure][:name])
     title_ids = params[:figure][:title_ids]
-    title_name = params[:figure][:title_name]
+    title_name = params[:title][:name]
     landmark_ids = params[:figure][:landmark_ids]
     landmark_name = params[:figure][:landmark_name]
     landmark_year = params[:figure][:landmark_year]
