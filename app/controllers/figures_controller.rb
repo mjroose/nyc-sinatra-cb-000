@@ -33,7 +33,7 @@ class FiguresController < ApplicationController
     title_ids = params[:figure][:title_ids]
     title_name = params[:title][:name]
     landmark_ids = params[:figure][:landmark_ids]
-    landmark_name = params[:figure][:landmark_name]
+    landmark_name = params[:landmark][:name]
     landmark_year = params[:figure][:landmark_year]
 
     if @figure
