@@ -26,32 +26,28 @@ class LandmarksController < ApplicationController
   end
 
   post '/landmarks' do
-    @figure_name = params[:figures][:name]
-    @figure_id = params[:figures][:id]
+    @figure = LandmarkHelpers.find_or_create_figure(name: params[:figures][:name], id: params[:figures][:id])
     @landmark = Landmark.find_or_create_by(name: params[:landmark][:name], year_completed: params[:landmark][:year_completed]) unless params[:landmark][:name] == ""
-    @title_name = params[:titles][:name]
-    @title_ids = params[:titles][:ids] || []
-
-    if @figure_name
-      @figure = Figure.find_or_create_by(name: @figure_name)
-    elsif @figure_id
-      @figure = Figure.find_by(id: @figure_id)
-    end
-
-    if @title_name
-      @title_ids << Title.find_or_create_by(name: @title_name).id
-      @title_ids.uniq!
-    end
+    @figure.titles = LandmarkHelpers.collect_titles(name: params[:titles][:name], ids: params[:titles][:ids])
 
     if @figure
-      @figure.landmarks << @landmark
-      @figure.titles = @title_ids.collect do |title_id|
-        title = Title.find_by(id: title_id)
-      end.compact
-
+      @figure.landmarks << @landmark unless @landmark == nil
       @figure.save
     end
 
     redirect to :"/landmarks/#{@landmark.id}"
+  end
+
+  patch '/landmarks/:id' do
+    @figure_name = params[:figures][:name]
+    @figure_id = params[:figures][:id]
+    @landmark = Landmark.find_by(params[:id])
+    @title_name = params[:titles][:name]
+    @title_ids = params[:titles][:ids] || []
+
+    if @landmark
+      
+    end
+    
   end
 end
