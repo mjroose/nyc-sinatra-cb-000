@@ -3,7 +3,7 @@ class LandmarkHelpers
   def self.find_or_create_figure(figure_data)
     name = figure_data[:name]
     id = figure_data[:id]
-    
+
     if name
       figure = Figure.find_or_create_by(name: name)
     elsif id
