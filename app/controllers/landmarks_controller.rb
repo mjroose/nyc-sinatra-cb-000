@@ -26,7 +26,8 @@ class LandmarksController < ApplicationController
   end
 
   post '/landmarks' do
-    @figure = LandmarkHelpers.find_or_create_figure(name: params[:figures][:name], id: params[:figures][:id])
+    @figure = LandmarkHelpers.find_or_create_figure(params[:figures])
+    binding.pry
     @landmark = Landmark.find_or_create_by(name: params[:landmark][:name], year_completed: params[:landmark][:year_completed]) unless params[:landmark][:name] == ""
     @figure.titles = LandmarkHelpers.collect_titles(name: params[:titles][:name], ids: params[:titles][:ids])
 
