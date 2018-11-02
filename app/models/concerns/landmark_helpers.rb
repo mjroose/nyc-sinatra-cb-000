@@ -1,5 +1,4 @@
 class LandmarkHelpers
-
   def self.find_or_create_figure(figure_data)
     name = figure_data[:name]
     id = figure_data[:id]
@@ -14,7 +13,9 @@ class LandmarkHelpers
     figure
   end
 
-  def self.collect_titles(name: nil, ids: [])
+  def self.collect_titles(titles_data)
+    name = titles_data[:name]
+    ids = title_data[:ids] || []
     if name
       ids << Title.find_or_create_by(name: @name).id
     end
