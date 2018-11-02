@@ -1,6 +1,7 @@
 class LandmarkHelpers
 
   def self.find_or_create_figure(name: nil, id: nil)
+    self.get_figure_data_from_params(params)
     if name
       figure = Figure.find_or_create_by(name: name)
     elsif id
