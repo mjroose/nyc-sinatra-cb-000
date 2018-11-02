@@ -46,10 +46,13 @@ class FiguresController < ApplicationController
 
   patch '/figures/:id' do
     @figure = Figure.find_by(params[:id])
+    name = params[:figure][:name]
+    titles = Helpers.collect_titles(params[:titles])
+    landmarks = Helpers.collect_landmarks(params[:landmarks])
 
     if @figure
-      @figure.update(name: params[:name], titles: Helpers.collect_titles(params[:titles]), landmarks: Helpers.collect_landmarks(params[:landmarks]))
-      
+      @figure.update(name: params[:figure][:name], titles: titles, landmarks: landmarks)
+
       redirect to :"/figures/#{@figure.id}"
     else
       @figures = Figure.all
