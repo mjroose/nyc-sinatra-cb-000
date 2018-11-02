@@ -3,6 +3,7 @@ class LandmarksController < ApplicationController
   register Sinatra::Twitter::Bootstrap::Assets
 
   get '/' do
+    @landmarks = Landmark.all
     erb :'/landmarks/index'
   end
 end
