@@ -20,4 +20,8 @@ class LandmarkHelpers
       Title.find_by(id: id)
     end.compact
   end
+
+  def self.get_figure_data_from_params(name: params[:figures][:name], id: params[:figures][:id])
+    {:name => name, :id => id}
+  end
 end

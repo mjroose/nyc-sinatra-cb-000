@@ -46,8 +46,8 @@ class LandmarksController < ApplicationController
     @title_ids = params[:titles][:ids] || []
 
     if @landmark
-      
+
     end
-    
+
   end
 end
