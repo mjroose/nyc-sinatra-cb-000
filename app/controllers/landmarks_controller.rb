@@ -34,7 +34,7 @@ class LandmarksController < ApplicationController
       @figure = Figure.find_or_create_by(name: @figure_name)
     elsif @figure_id
       @figure = Figure.find_by(id: @figure_id)
-    end      
+    end
 
     if @title_name
       @title_ids << Title.find_or_create_by(name: @title_name).id
@@ -47,7 +47,7 @@ class LandmarksController < ApplicationController
         title = Title.find_by(id: title_id)
       end.compact
     end
-    
+
     binding.pry
   end
 end
