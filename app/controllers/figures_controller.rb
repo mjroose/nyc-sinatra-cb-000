@@ -30,6 +30,11 @@ class FiguresController < ApplicationController
   post '/figures' do
     binding.pry
     @figure = Figure.create(name: params[:figure][:name])
+    title_ids = params[:figure][:title_ids]
+    title_name = params[:figure][:title_name]
+    landmark_ids = params[:figure][:landmark_ids]
+    landmark_name = params[:figure][:landmark_name]
+    landmark_year = params[:figure][:landmark_year]
 
     if @figure
       @figure.titles = Helpers.collect_titles(params[:titles])
