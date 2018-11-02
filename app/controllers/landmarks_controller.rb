@@ -6,4 +6,22 @@ class LandmarksController < ApplicationController
     @landmarks = Landmark.all
     erb :'/landmarks/index'
   end
+
+  get '/landmarks/new' do
+    erb :'/landmarks/new'
+  end
+
+  get '/landmarks/:id/edit' do
+    @landmark = Landmark.find_by(id: params[:id])
+    erb :'/landmarks/edit'
+  end
+
+  get '/landmarks/:id' do
+    @landmark = Landmark.find_by(id: params[:id])
+    erb :show
+  end
+
+  post '/landmarks' do
+
+  end
 end
