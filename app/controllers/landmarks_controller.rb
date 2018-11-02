@@ -58,11 +58,7 @@ class LandmarksController < ApplicationController
       binding.pry
       redirect to :"/landmarks/#{@landmark.id}"
     else
-      @landmark = Landmark.find_by(id: params[:id])
-      @titles = Title.all
-      @figures = Figure.all
-      @error_message = "You must give the landmark a name!"
-      erb :'/landmarks/edit'
+      redirect to :'/landmarks'
     end
   end
 end
