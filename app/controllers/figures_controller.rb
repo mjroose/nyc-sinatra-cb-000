@@ -43,4 +43,8 @@ class FiguresController < ApplicationController
       erb :'/figures/new'
     end
   end
+
+  patch '/figures/:id' do
+    binding.pry
+  end
 end
