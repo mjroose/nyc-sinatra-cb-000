@@ -20,6 +20,14 @@
     <label for="landmark<%= landmark.id %>"><%= landmark.name %></label>
     <input type="checkbox" id="landmark<%= landmark.id %>" name="landmarks[ids]">
   <% end %>
+
+  <h3>Create New Landmark:</h3>
+  <label for="landmarks[name]">Name: </label>
+  <input type="text" name="landmarks[name]">
+  <label for="landmarks[year]">Year: </label>
+  <input type="text" name="landmarks[year]">
+
+  <input type="submit" value="Create New Figure">
 </form>
 
 <a class="button" href="/figures">Landmarks</a>
